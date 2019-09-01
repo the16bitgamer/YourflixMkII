@@ -187,6 +187,21 @@ Hello World
 This is a Python Test
 ```
 
+### Installing Python's MySQLdb (3)
+
+Yourflix requires the use of a Database to allow us to build the data structures for Yourflix to work. And a lot of the leg work is done with python.
+
+To install MySQLdb type in ```sudo apt-get install python-mysqldb```
+
+if you want to test to make sure MySQLdb works just type in
+
+```
+python
+import MySQLdb
+```
+
+if any error show up MySQLdb didn't install correctly
+
 ## Installing PHP
 
 [I am following this tutorial if you wanted more details](https://howtoraspberrypi.com/how-to-install-web-server-raspberry-pi-lamp/)
@@ -213,23 +228,6 @@ The reason we cd into apache2 instead of just editing the file is because your p
 When you edit php.ini, find the lines ```;extension=mbstring``` and ```;extension=mysqli```. Once found remove the ';' and make sure mbstring is above mysqli.
 
 Once done mysqli will now allow you to download.
-
-
-
-## Installing Python's MySQLdb (3)
-
-Yourflix requires the use of a Database to allow us to build the data structures for Yourflix to work. And a lot of the leg work is done with python.
-
-To install MySQLdb type in ```sudo apt-get install python-mysqldb```
-
-if you want to test to make sure MySQLdb works just type in
-
-```
-python
-import MySQLdb
-```
-
-if any error show up MySQLdb didn't install correctly
 
 ## Installing MySQL (4)
 
