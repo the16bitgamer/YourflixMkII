@@ -99,7 +99,13 @@ We need to add the following
 
 ```UUID=[**YOU UUID**] [**YOUR FILE LOCATION**] [**THE DRIVES FILE FORMATE**] defaults,auto,nofail,umask=000,user0,users,Susers,rw,0,0```
 
-for the File Location I will be placing it on /home/pi/Videos/ you can place it anywhere just keep in mind where it is located for later in the instructions.
+the **file format** need to be **__lowercase__** and for the **File Location** I will be placing it on ```/home/pi/Videos/``` you can place it anywhere just keep in mind where it is located for later in the instructions.
+
+***NOTE FOR NTFS DRIVES***
+
+if you have a drive which uses NTFS, you need to install ntfs-3g first with:
+
+```sudo apt-get install ntfs-3g```
 
 ### Yourflix File Structure.
 
@@ -136,6 +142,8 @@ If you want thumbnails for the videos create a dir folder with the images in it.
 If you file folder structor is not like this. Yourflix will break or become buggy. Planning on improving it later
 
 ## Installing Apache and configure for Yourflix (5)
+
+[I am following this tutorial if you wanted more details](https://howtoraspberrypi.com/how-to-install-web-server-raspberry-pi-lamp/)
 
 Apache is my webserver of choice. Mostly because it is what I started using when testing this. Primarly because it can stream video.
 
@@ -178,6 +186,35 @@ Python should return:
 Hello World
 This is a Python Test
 ```
+
+## Installing PHP
+
+[I am following this tutorial if you wanted more details](https://howtoraspberrypi.com/how-to-install-web-server-raspberry-pi-lamp/)
+
+We need a way to access the database and do some on server computation, like calling python code, accessing the database and generating webpages.
+
+to install call ```sudo apt-get install php phpmbstring```
+
+add the following to your index.html in /var/www/html/ ```<?php echo phpinfo(); ?>```
+
+### Adding MySQL Support
+
+To access the database we need to install ```sudo apt-get install php-mysql```
+
+If you are getting and Error: 500 or "PHP Fatal error:  Uncaught Error: Call to undefined function mysqli_connect()" you need to enable mysqli. To enable it open
+
+```
+cd /etc/php/7.3/apache2
+sudo nano php.ini
+```
+
+The reason we cd into apache2 instead of just editing the file is because your php version might be different from mine. If you are having trouble finding the folder, try navigating to it one folder at a time. when you find the missing link type ls to find the correct folder.
+
+When you edit php.ini, find the lines ```;extension=mbstring``` and ```;extension=mysqli```. Once found remove the ';' and make sure mbstring is above mysqli.
+
+Once done mysqli will now allow you to download.
+
+
 
 ## Installing Python's MySQLdb (3)
 
@@ -222,3 +259,107 @@ $ sudo mysql -u root
 ```
 
 We are not done with the Database quite yet. But we need to install other items first to make things easier.
+
+### Adding Remote User
+
+If you want to connect your database to a external client like MySQL and not rely on the command line. You are going to need to do a bit of work.
+
+First we need to make mariadb listen to external connections. [Following this tutorial](https://websiteforstudents.com/configure-remote-access-mysql-mariadb-databases/)
+
+First open this file ```sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf``` and comment out ```bind-address = 127.0.0.1```.
+
+Next reset server. ```sudo systemctl restart mariadb.service```
+
+Now we need to add a new user to remote into out database
+
+```
+$mysql -u root -p
+
+//Creating local user
+MariaDB> CREATE USER '[INSERT_USERNAME]'@'localhost' IDENTIFIED BY '[INSERT_PASSWORD]';
+MariaDB> GRANT ALL PRIVILEGES ON *.* TO '[INSERT_USERNAME]'@'localhost' WITH GRANT OPTION;
+
+//Creating Remote User
+MariaDB> CREATE USER '[INSERT_USERNAME]'@'%' IDENTIFIED BY '[INSERT_PASSWORD]';
+MariaDB> GRANT ALL PRIVILEGES ON *.* TO '[INSERT_USERNAME]'@'%' WITH GRANT OPTION;
+```
+
+Now you can use any software to manage and modify the database instead of using the command line. I will assume though we are still using command line for the remainder of the install but all sql commands will work.
+
+## Configureing Yourflix
+
+Congrats the hard part is done and Yourflix is ready to be setup.
+
+There are 2 thing which we need to do first before we can start streaming videos.
+
+1. Setup the Database
+
+2. Download Yourflix
+
+### Setting up the Database
+
+We will need the Following:
+
+1. A Database called "Pi_YourFlix_Data"
+
+2. 3 Tables
+   - "YourFlix_VideoInfo"
+   - "YourFlix_ShowInfo"
+   - "YourFlix_ShowSeasons"
+   
+3. A user called pi
+
+So lets create this Database and use it
+
+```
+CREATE DATABASE Pi_YourFlix_Data;
+USE Pi_YourFlix_Data;
+```
+
+Now let's Create the Tables
+
+YourFlix_VideoInfo
+```
+CREATE TABLE `Pi_YourFlix_Data`.`YourFlix_VideoInfo` (
+  `VideoId` INT(11) NOT NULL AUTO_INCREMENT,
+  `VideoLoc` VARCHAR(155) NOT NULL,
+  `VideoName` VARCHAR(255) NOT NULL,
+  `VideoDescription` VARCHAR(1000) NULL,
+  `ShowId` INT NOT NULL,
+  `SeasonId` VARCHAR(255) NULL,
+  PRIMARY KEY (`VideoId`, `VideoLoc`));
+```
+
+YourFlix_ShowInfo
+```
+CREATE TABLE `Pi_YourFlix_Data`.`YourFlix_ShowInfo` (
+  `ShowId` INT(11) NOT NULL AUTO_INCREMENT,
+  `ShowType` VARCHAR(3) NOT NULL,
+  `ShowName` VARCHAR(155) NOT NULL,
+  `ShowDescription` VARCHAR(3000) NULL,
+  PRIMARY KEY (`ShowId`, `ShowName`));
+```
+
+YourFlix_ShowSeasons
+```
+CREATE TABLE `Pi_YourFlix_Data`.`YourFlix_ShowSeasons` (
+  `ShowId` INT NOT NULL,
+  `SeasonName` VARCHAR(155) NOT NULL,
+  `SeasonID` VARCHAR(155) NOT NULL,
+  PRIMARY KEY (`SeasonID`));
+```
+
+Adding the user pi (if you want to change it you need to change YourflixDbManager.python
+
+```
+MariaDB> CREATE USER 'pi'@'localhost' IDENTIFIED BY 'raspberry';
+MariaDB> GRANT INSERT ON Pi_YourFlix_Data.* TO '[INSERT_USERNAME]'@'localhost';
+MariaDB> GRANT SELECT ON Pi_YourFlix_Data.* TO '[INSERT_USERNAME]'@'localhost';
+MariaDB> GRANT DELETE ON Pi_YourFlix_Data.* TO '[INSERT_USERNAME]'@'localhost';
+```
+
+### Downloading Yourflix
+
+You can clone/download this repository or [just download a premade zip file here]()
+
+Unzip repository and move the files into ```/var/www/html/```. Now that you are done just load up your IP address and let Yourflix do it's thing.
