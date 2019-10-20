@@ -1,0 +1,83 @@
+This is a step by step tutorial to mount your drive to the
+correct location and fiish etting up YourFlix
+
+1) Mounting HDD
+
+	I) Open Terminal
+	II) type in Terminal
+		sudo lsblk -o UUID,NAME
+	III) write down the UUID fo your Drive
+		it should look like 74D2B2F0D2B2B5A8
+	IV) type in Terminal
+		sudo nano /etc/fstab
+	V) Look fo UUID and replace it with the new one
+		Only 1 Drive can be mounted on a file at one time
+	VI) If you want to add any additional dives type in
+		UUID=**YOU UUID** **YOUR FILE LOCATION*** **THE DRIVES FILE FORMATE** defaults,auto,nofail,umask=000,user0,users,Susers,rw,0,0
+	VII)press CTRL and X to quit
+		press Y then ENTER to save
+	VIII) type reboot in the terminal
+
+2) Setting up Static IP
+
+	I) We need to get you IP Addess
+		0) Connect You Pi to the internet via the ethernet NOT WIFI (max connections is 3 or 4) 
+		a) Open the Teminal
+		b) Type in the Terminal
+			ifconfig
+		c) Write Down the IP Address
+			It should look like 192.168.0.5
+
+	II) Now we net to configure your IP address so it doesn't change
+		a) On the top bar look for and Up aro and a down arow flashing
+			5 icons fom the left next to the speaker
+		b) LEFT Click it then Right click "Wireless and Wired Network Settings"
+		c) next to Interface press the button and select eth0
+		d) Set the IP Address to the first 3 number in the one you wrote down
+			i.e. 192.168.0.
+		e) Now for the last number type in any number which is easy to remember but is less than 250 like 155
+			you IP address should no look like 192.168.0.155
+		f) Press Apply
+		g) Now reboot your PI
+
+	III) Congrats YourFlix is working type in te IP addres ona web browser to see it work
+
+3) Building the Media Server database (MiniDlna)
+
+	I) Via Terminal
+		a) Open a Terminal
+		b) type in the terminal
+			sudo service minidlna restart
+
+	II) Via Web Browser
+		a) Type in your Pi's IP Address on any web Browser
+		b) Once the page has loaded scroll to the bottom
+		c) look for BLACK TEXT that says
+			Update Server
+		d) Click Update Server
+
+4) Setting up DNS Server (DNSMasq)
+
+	I) A DNS Server software is already installed
+	II) To configure it Open a Terminal and type
+		sudo nano /etc/dnsmasq.conf
+	III) add your ip address and the site you want yourflix to be accessible from
+	IV) consult your Router's manual to add dns server
+
+5) Update Website Server Code (Flask)
+
+	I) The Server is a Flask server running on port 5000
+	II) The file is located @
+		/home/pi/webapp
+	III) The HTML Pages are in
+		/home/pi/webapp/templates
+	IV) The Python code is app.py
+
+6) Editing the css
+	
+	I) The css should be on the HDD
+
+7) Updating the Web end (Apache2)
+
+	I) The Website and videos uses Apache2
+

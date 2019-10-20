@@ -8,9 +8,9 @@ function BuildShowBar(baseUrl, ShowName, ShowId, SeasonName, seasonIdArray, seas
     
     //Back Button
     showBar += "<th style=\"width:1%\">";
-    showBar += "<button type=\"button\" class=\"btn btn-danger\" onclick=\"window.location.href = '"+baseUrl+"browse/'\">";
+    showBar += "<a href=\""+baseUrl+"browse/#"+ShowId+"\"> <button type=\"button\" class=\"btn btn-danger\">";
     showBar += "<img src=\""+baseUrl+"img/Back%20Arrow.png\" style=\"height:1.5em;\"/>";
-    showBar += "</button>";
+    showBar += "</button></a>";
     showBar += "</th>";
     
     //Show Name

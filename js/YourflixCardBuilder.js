@@ -1,7 +1,9 @@
-function BuildCard(showName, showImg, showUrl, textOverflow, newShow){
-	var cardText = "<div id='"+showUrl+"' class='card' style='width:100%;'>";
+function BuildCard(baseUrlIn, showName, showImg, showUrl, textOverflow, newShow){
+    var newPage = baseUrlIn+"show/?show="+showUrl;
+    
+	var cardText = "<div id='"+showUrl+"' tabindex='"+showUrl+"' class='card' style='width:100%;'>";
 	cardText += "<img class='card-img-top' src=\""+window.location.origin +"/"+ showImg +"\" alt='"+showName+"'>";
-	cardText += "<a class='stretched-link' onclick='LoadShowPage("+showUrl+")'></a>";
+	cardText += "<a class='stretched-link' href="+newPage+"></a>";
 	cardText += "<h4 class='card-title pl-3 ";
 	if(!textOverflow)
 	{
@@ -17,13 +19,17 @@ function BuildCard(showName, showImg, showUrl, textOverflow, newShow){
 	
 	return cardText;
 }
-
-function BuildCards(showsIn, imagesIn, urlsIn,textOverflow, newShowsIn)
+        
+function BuildCards(urlIn, showsIn, imagesIn, urlsIn,textOverflow, newShowsIn)
 {
 	var cardsArray = [];
+    var today = new Date();
 	for (i = 0; i < showsIn.length; i++)
 	{
-		cardsArray.push(BuildCard(showsIn[i],imagesIn[i],urlsIn[i],textOverflow,newShowsIn[i]));
+        var currDate = new Date(newShowsIn[i]);
+        currDate.setDate(currDate.getDate() + 14);
+        var isNew = today < currDate;
+		cardsArray.push(BuildCard(urlIn, showsIn[i],imagesIn[i],urlsIn[i],textOverflow,isNew));
 	}
 	
 	return cardsArray;

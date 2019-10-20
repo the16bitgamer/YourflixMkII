@@ -129,10 +129,7 @@
             $LastUpdated = array();
             foreach ($this->allShows as $currShow)
             {
-                $mysqldate = strtotime(currShow['LastUpdated']);
-                //adding 2 weeks
-                $mysqldate = $mysqldate + (20160);
-                $LastUpdated[] = $mysqldate > $currentTime;
+                $LastUpdated[] = $currShow['LastUpdated'];
             }
             
             $myJSON = json_encode($LastUpdated);

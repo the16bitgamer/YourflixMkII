@@ -419,3 +419,10 @@ add the following
 ```
 address=/yourflix.tv/192.168.2.155
 ```
+
+
+###Adding IMDb
+
+```
+sudo python3 -m pip install imdbpy
+```

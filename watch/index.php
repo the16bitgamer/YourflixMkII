@@ -1,6 +1,5 @@
 <?php
 	$phpUrl = $_SERVER['DOCUMENT_ROOT']; 
-	$url = $_SERVER['SERVER_NAME']; 
     include $phpUrl.'/php/YourflixWatch.php';
     parse_str($_SERVER["QUERY_STRING"]);
 ?>
@@ -59,7 +58,7 @@
         window.onload = LoadPage;
 		window.onresize = UpdateVideoSize;
         
-        var baseUrl = <?php echo "\"http://".$url."/\""; ?>;
+        var baseUrl = location.protocol + "//" + location.hostname+"/";
         
         var playButton = document.getElementById("PlayButton");        
         var playImg = baseUrl+"img/PlayVideo.png";

@@ -20,26 +20,38 @@ function BuildVideoNavBar(baseUrl, episodeName, currShow, nextEpisode, prevEpiso
 function GenerateShowBar(baseUrl, episodeName, currShow, nextEpisode, prevEpisode)
 {
     var nav = "<tr>";
-    if(prevEpisode != "")
+    if(prevEpisode != "" || nextEpisode != "")
     {
         nav += "<th style=\"float: left;\">";
-        nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"watch/?video="+prevEpisode+"')\">Prev</button>";
+        if(prevEpisode != "")
+        {
+            nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"watch/?video="+prevEpisode+"')\">";
+            nav += "<img src=\""+baseUrl+"/img/Left%20Arrow.png\" style=\"height:2em;\"/>";
+        }
+        else
+        {
+            nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"ReturnShowPage()\">";
+            nav += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:2em;\"/>";
+        }
+        nav += "</button>";
         nav += "</th>";
     }
     nav += "<th style=\"text-align: center; margin-bottom:0px;\">";
     nav += "<p class=\"text-white\" style=\"font-size:2vw; margin-bottom:0px;\">"+episodeName+"</p>"
     nav += "</th>";
-    if(prevEpisode != "")
+    if(prevEpisode != "" || nextEpisode != "")
     {
         nav += "<th style=\"float: right;\">";
         if(nextEpisode != "")
         {
-            nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"watch/?video="+nextEpisode+"')\">Next</button>"
+            nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"watch/?video="+nextEpisode+"')\">";
         }
         else
         {
-            nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"show/?show="+currShow+"')\">Next</button>"
+            nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"ReturnShowPage()\">";
         }
+        nav += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:2em;\"/>";
+        nav += "</button>";
         nav += "</th>";
     }
     nav += "</tr>";
@@ -51,7 +63,7 @@ function GenerateNav(baseUrl)
 {
     var nav = "<tr>";
     nav += "<th style=\"float: left;\">";
-    nav += "<img id=\"Yourflix\" style=\"width:4em;\" src=\""+baseUrl+"img/YourFlix 1080p.png\" onclick=\"OpenLink('"+baseUrl+"browse/')\"/>";
+    nav += "<a href=\""+baseUrl+"browse/\"> <img id=\"Yourflix\" style=\"width:4em;\" src=\""+baseUrl+"img/YourFlix 1080p.png\"/> </a>";
     nav += "</th>";
     nav += "</tr>";
     

@@ -43,8 +43,12 @@ def UpdateDb(self, updateCol, updateValue, value, location, db, table):
 def RemoveFromDb(self, value, location,  db, table):
     self._dbCursor.execute("DELETE FROM `"+db+"`.`"+table+"` WHERE (`"+location+"` = \""+str(value)+"\");")
 
-def SearchDb (self, range, db, table, col, search):
-    self._dbCursor.execute("SELECT "+range+" FROM `"+db+"`.`"+table+"` WHERE `"+col+"` = \"%s\";" % search)
+def SearchDb (self, range, db, table, field, search):
+    self._dbCursor.execute("SELECT "+range+" FROM `"+db+"`.`"+table+"` WHERE `"+field+"` = \"%s\";" % search)
+    return self._dbCursor.fetchall()
+    
+def SearchNullDb (self, range, db, table, field):
+    self._dbCursor.execute("SELECT "+range+" FROM `"+db+"`.`"+table+"` WHERE `"+field+"` is NULL")
     return self._dbCursor.fetchall()
     
 def GetAllTableData(self, range, db, table):

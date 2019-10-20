@@ -1,0 +1,14 @@
+proc            /proc           proc    defaults          0       0
+PARTUUID=bb6585dd-01  /boot           vfat    defaults          0       2
+PARTUUID=bb6585dd-02  /               ext4    defaults,noatime  0       1
+# a swapfile is not a swap partition, no line here
+#   use  dphys-swapfile swap[on|off]  for that
+
+#Toshiba Laptop HDD
+#UUID=FC2AF41E2AF3D39C /home/pi/Videos/ ntfs defaults,auto,nofail,umask=000,users,Susers,rw,0,0
+
+#Red 4TB HDD
+#UUID=88DA84A2DA848DDE /home/pi/Videos/ ntfs defaults,auto,nofail,umask=000,users,Susers,rw,0,0
+
+#Black HDD 4TB
+UUID=74D2B2F0D2B2B5A8 /home/pi/Videos/ ntfs defaults,auto,nofail,umask=000,user0,Suser,w,0,0

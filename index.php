@@ -22,7 +22,6 @@
 		<div id="ConsoleMessage" class="text-center text-light" style="max-height:75%;">
 			Checking Last Update
 		</div>
-        
 		<script type="text/javascript">
 			var mainPage = window.location+"/browse";
 			

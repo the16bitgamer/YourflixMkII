@@ -1,6 +1,6 @@
 <?php
-	$url = $_SERVER['DOCUMENT_ROOT'];
-	include $url.'/php/YourflixShows.php';
+	$phpUrl = $_SERVER['DOCUMENT_ROOT'];
+	include $phpUrl.'/php/YourflixShows.php';
     
 ?>
 
@@ -20,13 +20,13 @@
 		<script src="..\js\YourflixRecommendedBuilder.js"></script>
 		<script src="..\js\YourflixRowSizes.js"></script>
 		<script src="..\js\YourflixShowPage.js"></script>
+		<script src="..\js\YourflixNavBar.js"></script>
 		<script src="..\js\YourflixVideoPage.js"></script>
 	</head>
 	<body id="Main_Body"class="bg-secondary">
 	
-		<nav id="NavBar" class='navbar navbar-expand-md navbar-dark bg-dark sticky-top'>
-			<?php include $url.'/php/YourflixNavBar.php';?>
-		</nav>
+		<div id="NavBar" class="fixed-top">
+		</div>	
         
 		<div id="Recommended">			
 		</div>
@@ -41,18 +41,30 @@
     <script>
         window.onload = LoadPage;
 		window.onresize = GeneratePage;
-        var baseUrl = <?php echo "\"http://".$url."/\""; ?>;
+        var baseUrl = location.protocol + "//" + location.hostname+"/";
         var showPageUrl = baseUrl+"/php/YourflixShowPage.php";
         var urlParams = new URLSearchParams(window.location.search);
-        
+        var focused = false;
+        var focusId = window.location.href.split("#")[1];     
         document.getElementById("PageTitle").innerHTML = "Yourflix Browse All";
         
         LoadPage();
         function LoadPage()
         {
+            document.getElementById("NavBar").innerHTML = BuildNavBar(baseUrl);   
             GeneratePage();
+            setTimeout(function(){
+                if(!focused)
+                {
+                    focused = true;
+                    document.getElementById(focusId).focus();
+                }
+            }, 500);
         }
-        
+        document.addEventListener('DOMContentLoaded', function() {
+            focused = true;
+            document.getElementById(focusId).focus();
+        }, false);
         function GeneratePage()
 		{
 			var numCol = GetNumColums();
@@ -62,18 +74,11 @@
 		}
     </script>
     
-    <script>
-        function LoadShowPage(showID)
-        {
-            window.location.href = baseUrl+"show/?show="+showID;
-        }
-    </script>
-    
 	<script>
         //Recomened Builder
 		function Recommended(numCol)
 		{				
-			var cards = BuildCards(shows, showsImages, showsUrl, false, showsNew);
+			var cards = BuildCards(baseUrl, shows, showsImages, showsUrl, false, showsNew);
 			
 			var recommendedString = BuildRecommended(cards,numCol);
 			document.getElementById("Recommended").innerHTML = recommendedString;
@@ -95,7 +100,7 @@
     
     function Shows(numCol)
     {
-        var cards = BuildCards(shows, showsImages, showsUrl, true, showsNew);
+        var cards = BuildCards(baseUrl, shows, showsImages, showsUrl, true, showsNew);
         
         var showString = BuildShows("All",cards,shows,numCol);
         document.getElementById("Shows").innerHTML = showString;

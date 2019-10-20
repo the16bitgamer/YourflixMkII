@@ -14,9 +14,6 @@ _seasonsTable = "YourFlix_ShowSeasons"
 _videosDir = "/home/pi/Videos/"
 _root = "/home/pi/"
 
-_user = "pi"
-_password = "raspberry"
-
 _dateStamp = date.today().strftime("%Y-%m-%d %H:%M:%S")
 
 def GetFoldersInDir(self, currDir):
@@ -49,10 +46,10 @@ def GetShowId(self, db, currShow, showType, listOfAllItems, dbShows):
         if x[2] == currShow:
             return x[0]
     
-    imageLoc = ""
+    imageLoc = "Videos/DIR/"+currShow+".png"
     
     for img in listOfAllItems:
-        if (not img.endswith(".mp4")) and (currShow+"." in img) and ("DIR" in img):
+        if (not img.endswith(".mp4")) and ("/"+currShow+"." in img) and ("DIR" in img):
             imageLoc = img.split(self._root)[1]
             
     db.InsertIntoDb(db, [showType, currShow, imageLoc, self._dateStamp],["ShowType","ShowFolderName","ShowImg","LastUpdated"], self._currentDb, self._showsTable)
@@ -89,7 +86,7 @@ def UpdateYourFlix(self, db, listOfNewShows, listOfAllItems):
             if len(showInfo) > 2 and not seasonId == (currShow+" "+showInfo[1]):
                 season = showInfo[1]
                 seasonId = currShow + " " + showInfo[1]
-                if not season in dbSeasons:
+                if not any(seasonId in dbSeason for dbSeason in dbSeasons):
                     db.InsertIntoDb(db, [currShowId, season, seasonId, self._dateStamp], ["ShowId", "SeasonFolderName","SeasonId", "LastUpdated"], self._currentDb, self._seasonsTable)
                 
                 db.UpdateDb(db, "SeasonID", seasonId, [self._dateStamp], ["LastUpdated"], self._currentDb, self._seasonsTable)
@@ -147,10 +144,7 @@ def VarifyDbData(self, db):
     return numOfNewShows
 
 
-def CheckDatabase(self):
-
-    db = DatabaseManager
-    db.ConnectToDb(db, self._user, self._password)
+def CheckDatabase(self, db):
 
     addedToDb = VarifyDbData(self, db)
     
@@ -170,7 +164,5 @@ def CheckDatabase(self):
         os.system("sudo service minidlna restart")
 
     returnString = "Updating Database. Added Shows: "+ str(addedToDb) + " Removed Show: " + str(removedFromDb)
-
-    db.DisconnectDb(db)
     
     return returnString

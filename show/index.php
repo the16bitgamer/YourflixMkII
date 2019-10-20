@@ -1,6 +1,5 @@
 <?php
-	$phpUrl = $_SERVER['DOCUMENT_ROOT']; 
-	$url = $_SERVER['SERVER_NAME']; 
+	$phpUrl = $_SERVER['DOCUMENT_ROOT'];
     include $phpUrl.'/php/YourflixShowPage.php';
     parse_str($_SERVER["QUERY_STRING"]);
     if(!isset($season))
@@ -25,15 +24,12 @@
 	</head>
 	<body id="Main_Body"class="bg-secondary">
 	
-		<div id="NavBar">
-		</div>	
-
+        <div id="NavBar">
+        </div>
         <div id="ShowBar">
         </div>
-        
         <div id="ShowDetails">
         </div>
-        
         <div id="VideoList">
         </div>
         
@@ -43,7 +39,7 @@
         window.onload = LoadPage;
 		//window.onresize = LoadPage;
         
-        var baseUrl = <?php echo "\"http://".$url."/\""; ?>;
+        var baseUrl = location.protocol + "//" + location.hostname+"/";
         
         var showData = <?php echo GetShowInfo($show, $season); ?>;    
 
@@ -55,6 +51,7 @@
         LoadPage();
         function LoadPage()
         {
+
             document.getElementById("ShowBar").innerHTML = BuildShowBar(baseUrl, showData.showName, showData.showId, showData.seasonName, showData.SeasonsId, showData.Seasons);
             document.getElementById("ShowDetails").innerHTML = BuildShowDetails(baseUrl, showData.showDesctiption, showData.showImg);
             document.getElementById("VideoList").innerHTML = BuildVideoList(baseUrl, showData.videosLoc, showData.videosName, showData.videosDescription, showData.videosImg);
