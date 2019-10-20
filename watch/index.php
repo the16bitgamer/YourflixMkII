@@ -100,11 +100,26 @@
             if (videoWindow.paused)
             {
                 videoWindow.play(); 
-                playButton.src = pauseImg;
             }
             else
             { 
                 videoWindow.pause(); 
+            } 
+            UpdateVideoState();
+        }
+        
+        function UpdateVideoState()
+        {
+            if(videoWindow == null)
+            {
+                videoWindow = document.getElementById("Video");
+            }
+            if (!videoWindow.paused)
+            {
+                playButton.src = pauseImg;
+            }
+            else
+            { 
                 playButton.src = playImg;
             } 
         }
