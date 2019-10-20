@@ -1,3 +1,31 @@
+# YourFlix Mk II
+
+Yourflix Mk II is a web interface and instruction on how to setup a LAMP server for a Raspberry Pi/Linux machine, that will allow you to stream your personal video files on any device. Think of it as a Netflix but where you control the content and no show will get pulled down arbitrarily. 
+
+Currently Mk II has the same functionality as the original YourFlix, however I have given it room to grown and expand.
+
+Current Features:
++ Generate Pages for All Show, Current Show Page, and Video Page
++ Automatically ads new Videos to the YourFlix Db and organizes them appropriately.
++ Auto Scaling Video Page
++ Mobile Device Support including PS Vita and New Nintendo 3DS
++ MiniDLNA Guide for Xbox 360 and PS3 support
++ Back Buttons that will return you to the correct version of the previous page. i.e. Watching a show will return you to the current season, returning to the main page will focus the webpage to the show you were watching.
+
+Planned Features:
++ Search
++ Filtering Shows and Movies
++ Manual content input: renaming TV shows and movies on the db, adding show descriptions, adding movie description, adding rage
++ Automatic Content input: from Wikipedia (planned to be included) and IMDb (manual install)
++ Users (with and without passwords)
++ User lists (favorite's custom lists)
++ Manual Search for new content
++ Recommended Pannel
++ Watch History
++ A way to delete watch history ;)
+
+No known date on when features will be implemented, planning on ceating a disc image on Archive.org soon for easy installation on Raspberry Pi. If you wish to contribue feel free to do so, or make your own.
+
 ### Yourflix Mk.II Install Guide
 ## Preparing Your Pi
 
