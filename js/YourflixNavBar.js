@@ -31,7 +31,7 @@ function GenerateShowBar(baseUrl, episodeName, currShow, nextEpisode, prevEpisod
         else
         {
             nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"ReturnShowPage()\">";
-            nav += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:2em;\"/>";
+            nav += "<img src=\""+baseUrl+"/img/Left%20Arrow.png\" style=\"height:2em;\"/>";
         }
         nav += "</button>";
         nav += "</th>";
@@ -45,12 +45,12 @@ function GenerateShowBar(baseUrl, episodeName, currShow, nextEpisode, prevEpisod
         if(nextEpisode != "")
         {
             nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"watch/?video="+nextEpisode+"')\">";
-            nav += "<img src=\""+baseUrl+"/img/Left%20Arrow.png\" style=\"height:2em;\"/>";
+            nav += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:2em;\"/>";
         }
         else
         {
             nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"ReturnShowPage()\">";
-        nav += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:2em;\"/>";
+            nav += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:2em;\"/>";
         }
         nav += "</button>";
         nav += "</th>";
