@@ -1,29 +1,16 @@
 var nextSeason = "";
 var previousSeason = "";
-var autoPlay = ('true' == localStorage['autoPlay']);
-var autoOff = "#ff0000";
-var autoOn = "#0000ff";
-var currColor = autoOff;
 
 function BuildShowBar(baseUrl, ShowName, ShowId, SeasonName, seasonIdArray, seasonsNamesArray)
 {
     var showBar = "<table style=\"width:100%\">";
     showBar += "<tr>";
-    console.log(autoPlay);
-    
-    if(autoPlay)
-    {
-        currColor = autoOn;
-    }
     
     //Back Button
     showBar += "<th style=\"width:10%\">";
     showBar += "<a href=\""+baseUrl+"browse/#"+ShowId+"\"> <button type=\"button\" class=\"btn btn-danger\">";
     showBar += "<img src=\""+baseUrl+"img/Back%20Arrow.png\" style=\"height:1.5em;\"/>";
     showBar += "</button></a>";
-    showBar += "<button type=\"button\" id='AutoPlay' class=\"btn text-white\" style=\"background-color:"+currColor+";\" onclick='SetAutoPlay()'>";
-    showBar += "AutoPlay";
-    showBar += "</button>";
     showBar += "</th>";
     
     //Show Name
@@ -154,19 +141,4 @@ function BuildVideoElement(baseUrl, videoId, VideoName, VideoDecription, VideoIm
     videoElement += "</div>";
     
     return videoElement;
-}
-
-function SetAutoPlay()
-{
-    autoPlay = !autoPlay;
-    if(autoPlay)
-    {
-        currColor = autoOn;
-    }
-    else
-    {
-        currColor = autoOff;
-    }
-    localStorage['autoPlay'] = autoPlay.toString();
-    document.getElementById("AutoPlay").style.background = currColor;
 }

@@ -30,12 +30,12 @@
 		<div id="VideoControlPannel" class='bg-dark'>
             <table style="width:100%">
                 <tr>
-                    <th style="float: left;">
+                    <th style="float: left; width:10%;">
                         <button type="button" class="btn btn-danger" onclick="ReturnShowPage()">
                             <img id="BackButton" style="height:2em;"/>
                         </button>
                     </th>
-                    <th style="text-align: center;">
+                    <th style="text-align: center; width:80%;">
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-primary" onclick="SkipTimeline(-10)">-10</button>
                             <button type="button" class="btn btn-primary" onclick="PlayVideo()">
@@ -44,7 +44,10 @@
                             <button type="button" class="btn btn-primary" onclick="SkipTimeline(10)">10+</button>
                         </div>
                     </th>
-                    <th style="float: right;">
+                    <th style="text-align: right; width:10%;">
+                        <button type="button" id='AutoPlay' class="btn text-white" style="background-color:"+currColor+";" onclick='SetAutoPlay()'>
+                            AutoPlay
+                        </button>
                         <button type="button" class="btn btn-primary">
                                 <img id="FullButton" style="height:2em;" onclick="OpenFullscreen()"/>
                         </button>
@@ -91,6 +94,15 @@
     <script type="text/javascript">
         var videoWindow = null;
         var autoPlay = ('true' == localStorage['autoPlay']);
+        var autoOff = "#ff0000";
+        var autoOn = "#0000ff";
+        var currColor = autoOff;    
+        
+        if(autoPlay)
+        {
+            currColor = autoOn;
+        }
+        document.getElementById("AutoPlay").style.background = currColor;
     
         function PlayVideo()
         {
@@ -179,7 +191,16 @@
         function SetAutoPlay()
         {
             autoPlay = !autoPlay;
+            if(autoPlay)
+            {
+                currColor = autoOn;
+            }
+            else
+            {
+                currColor = autoOff;
+            }
             localStorage['autoPlay'] = autoPlay.toString();
+            document.getElementById("AutoPlay").style.background = currColor;
         }
         
         function AutoPlay()
