@@ -70,7 +70,8 @@
         document.getElementById("FullButton").src = fullImg;
         document.getElementById("BackButton").src = backImg;
         
-        var videoData = <?php echo GetShow($video); ?>; 
+        var videoData = <?php echo GetShow($video); ?>;
+        var canAutoPlay = videoData.nextVideo != "" || videoData.prevVideo != "";
         document.getElementById("NavBar").innerHTML = BuildVideoNavBar(baseUrl, videoData.videoName, videoData.showId, videoData.nextVideo, videoData.prevVideo);        
         document.getElementById("PageTitle").innerHTML = "Yourflix Watch: " + videoData.videoName;
         
@@ -89,12 +90,13 @@
     
     <script type="text/javascript">
         var videoWindow = null;
+        var autoPlay = ('true' == localStorage['autoPlay']);
     
         function PlayVideo()
         {
             if(videoWindow == null)
             {
-                videoWindow = document.getElementById("Video");
+                SetVideoWindow();
             }
             
             if (videoWindow.paused)
@@ -112,7 +114,7 @@
         {
             if(videoWindow == null)
             {
-                videoWindow = document.getElementById("Video");
+                SetVideoWindow();
             }
             if (!videoWindow.paused)
             {
@@ -128,7 +130,7 @@
         {
             if(videoWindow == null)
             {
-                videoWindow = document.getElementById("Video");
+                SetVideoWindow();
             }
             videoWindow.currentTime = videoWindow.currentTime + timeJumped;
         }
@@ -142,7 +144,7 @@
         {
             if(videoWindow == null)
             {
-                videoWindow = document.getElementById("Video");
+                SetVideoWindow();
             }
             if (videoWindow.requestFullscreen) {
                 videoWindow.requestFullscreen();
@@ -159,6 +161,30 @@
             { /* IE/Edge */
                 videoWindow.msRequestFullscreen();
             }
+        }
+        
+        function SetVideoWindow()
+        {
+            if(canAutoPlay)
+            {
+                videoWindow = document.getElementById("Video");
+                videoWindow.addEventListener('ended',WhenVideoEnds,false);
+                function WhenVideoEnds(e)
+                {
+                    AutoPlay();
+                }
+            }
+        }
+        
+        function SetAutoPlay()
+        {
+            autoPlay = !autoPlay;
+            localStorage['autoPlay'] = autoPlay.toString();
+        }
+        
+        function AutoPlay()
+        {
+            window.location.href = (baseUrl+"watch/?video="+videoData.nextVideo);
         }
     </script>
     
@@ -180,6 +206,7 @@
             window.addEventListener("orientationchange", checkOrientation, false);
 
             setInterval(checkOrientation, 2000);
+            SetVideoWindow();
         }
     </script>
     

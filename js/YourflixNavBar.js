@@ -41,7 +41,7 @@ function GenerateShowBar(baseUrl, episodeName, currShow, nextEpisode, prevEpisod
     nav += "</th>";
     if(prevEpisode != "" || nextEpisode != "")
     {
-        nav += "<th style=\"float: right;\">";
+        nav += "<th style=\"text-align: right;\">";
         if(nextEpisode != "")
         {
             nav += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"OpenLink('"+baseUrl+"watch/?video="+nextEpisode+"')\">";
@@ -63,7 +63,7 @@ function GenerateShowBar(baseUrl, episodeName, currShow, nextEpisode, prevEpisod
 function GenerateNav(baseUrl)
 {
     var nav = "<tr>";
-    nav += "<th style=\"float: left;\">";
+    nav += "<th>";
     nav += "<a href=\""+baseUrl+"browse/\"> <img id=\"Yourflix\" style=\"width:4em;\" src=\""+baseUrl+"img/YourFlix 1080p.png\"/> </a>";
     nav += "</th>";
     nav += "</tr>";
