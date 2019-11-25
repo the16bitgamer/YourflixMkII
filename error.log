@@ -1,0 +1,140 @@
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mysqli' (tried: /usr/lib/php/20180731/mysqli (/usr/lib/php/20180731/mysqli: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mysqli.so (/usr/lib/php/20180731/mysqli.so: undefined symbol: mysqlnd_global_stats)) in Unknown on line 0
+PHP Warning:  Module 'mbstring' already loaded in Unknown on line 0
+[Sun Nov 24 00:00:58.364297 2019] [mpm_prefork:notice] [pid 584] AH00163: Apache/2.4.38 (Raspbian) configured -- resuming normal operations
+[Sun Nov 24 00:00:58.364454 2019] [core:notice] [pid 584] AH00094: Command line: '/usr/sbin/apache2'
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+[Sun Nov 24 19:53:00.855512 2019] [php7:notice] [pid 5314] [client 192.168.2.10:51051] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 32, referer: http://yourflix.tv/browse/
+[Sun Nov 24 19:54:14.996978 2019] [php7:notice] [pid 5684] [client 192.168.2.10:51063] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 32, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:24:28.158165 2019] [php7:notice] [pid 5572] [client 192.168.2.10:54181] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 37
+[Sun Nov 24 21:26:40.933451 2019] [php7:notice] [pid 5529] [client 192.168.2.10:54202] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:26:43.780689 2019] [php7:notice] [pid 5529] [client 192.168.2.10:54202] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:27:12.714820 2019] [php7:notice] [pid 5683] [client 192.168.2.10:54209] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:27:12.715111 2019] [php7:warn] [pid 5683] [client 192.168.2.10:54209] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36
+[Sun Nov 24 21:27:32.623864 2019] [php7:warn] [pid 5866] [client 192.168.2.10:54293] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:27:32.624068 2019] [php7:warn] [pid 5866] [client 192.168.2.10:54293] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:30:41.332124 2019] [php7:warn] [pid 5529] [client 192.168.2.10:54299] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:30:41.332312 2019] [php7:warn] [pid 5529] [client 192.168.2.10:54299] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:30:55.099851 2019] [php7:warn] [pid 5684] [client 192.168.2.10:54300] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:30:55.100036 2019] [php7:warn] [pid 5684] [client 192.168.2.10:54300] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+[Sun Nov 24 21:32:11.979750 2019] [php7:warn] [pid 5868] [client 192.168.2.10:54304] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:32:11.980012 2019] [php7:warn] [pid 5868] [client 192.168.2.10:54304] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36, referer: http://yourflix.tv/browse/
+[Sun Nov 24 21:32:22.449167 2019] [php7:warn] [pid 5827] [client 192.168.2.10:54305] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36
+[Sun Nov 24 21:32:22.449437 2019] [php7:warn] [pid 5827] [client 192.168.2.10:54305] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36
+[Sun Nov 24 21:32:28.762344 2019] [php7:notice] [pid 5314] [client 192.168.2.10:54306] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:32:28.762572 2019] [php7:warn] [pid 5314] [client 192.168.2.10:54306] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36
+[Sun Nov 24 21:33:16.794147 2019] [php7:notice] [pid 5827] [client 192.168.2.10:54318] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:34:05.987765 2019] [php7:warn] [pid 5572] [client 192.168.2.10:54320] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36
+[Sun Nov 24 21:34:05.988015 2019] [php7:warn] [pid 5572] [client 192.168.2.10:54320] PHP Warning:  A non-numeric value encountered in /var/www/html/index.php on line 36
+[Sun Nov 24 21:34:33.217499 2019] [php7:notice] [pid 5866] [client 192.168.2.10:54336] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:36:19.046520 2019] [php7:notice] [pid 5529] [client 192.168.2.10:54377] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:36:50.310680 2019] [php7:notice] [pid 5572] [client 192.168.2.10:54383] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+[Sun Nov 24 21:39:53.807018 2019] [php7:emerg] [pid 5828] [client 192.168.2.10:54404] PHP Parse error:  syntax error, unexpected 'isset' (T_ISSET), expecting '(' in /var/www/html/index.php on line 36
+[Sun Nov 24 21:39:56.122538 2019] [php7:emerg] [pid 5827] [client 192.168.2.10:54405] PHP Parse error:  syntax error, unexpected 'isset' (T_ISSET), expecting '(' in /var/www/html/index.php on line 36
+[Sun Nov 24 21:40:32.103065 2019] [php7:notice] [pid 5572] [client 192.168.2.10:54413] PHP Notice:  Undefined variable: force in /var/www/html/index.php on line 36
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+sudo: no tty present and no askpass program specified

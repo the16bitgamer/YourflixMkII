@@ -23,12 +23,21 @@
 			Checking Last Update
 		</div>
 		<script type="text/javascript">
-			var mainPage = window.location+"/browse";
+            var baseUrl = location.protocol + "//" + location.hostname+"/";
+			var mainPage = baseUrl+"/browse";
 			
 			var xmlhttp = new XMLHttpRequest();
 			var lastCheckhttp = new XMLHttpRequest();
 			var updateXml = new XMLHttpRequest();
-			
+            var urlParams = new URLSearchParams(location.search);
+            
+            var forced = false;
+            
+            if(urlParams.has('force'))
+            {
+                forced = urlParams.get('force');
+            }
+            
 			xmlhttp.open("GET", "php/getLastUpdated.php", true);
 			lastCheckhttp.open("GET", "php/getVideosSize.php", true);
 			updateXml.open("GET", "php/updateDatabase.php", true);
@@ -43,6 +52,7 @@
 					}
 					else
 					{
+						document.getElementById("ConsoleMessage").innerHTML = "Check for Update";
 						xmlhttp.send();
 					}
 				}
@@ -51,11 +61,15 @@
 			xmlhttp.onreadystatechange = function () {
 				if (this.readyState == 4 && this.status == 200)
 				{
+                    var notSent = true;
 					if(this.responseText == "True")
 					{
+						document.getElementById("ConsoleMessage").innerHTML = "Updating Database. Please Wait";
+                        notSent = false;
 						updateXml.send();
 					}
-					window.location.href = mainPage;
+                    
+                    window.location.href = mainPage;
 				}
 			}
 			
@@ -66,7 +80,16 @@
 				}
 			}
 			
-			lastCheckhttp.send();
+            
+            if(!forced)
+            {
+                lastCheckhttp.send();
+            }
+            else
+            {
+				document.getElementById("ConsoleMessage").innerHTML = "Force Updating Database. Please Wait";
+				updateXml.send();
+            }
 		</script>
 	</body>
 </html>

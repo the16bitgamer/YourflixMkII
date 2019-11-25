@@ -1,7 +1,6 @@
 <?php
 	$phpUrl = $_SERVER['DOCUMENT_ROOT'];
 	include $phpUrl.'/php/YourflixShows.php';
-    
 ?>
 
 <html lang ="en">
@@ -86,26 +85,25 @@
 	</script>
     
     <script type="text/javascript">
-    function ShowPage(currShowData, showID)
-    {
-        document.getElementById("myNav").innerHTML = BuildShowPage(baseUrl, currShowData.showName, currShowData.showImg, currShowData.videosLoc, currShowData.showDesctiption, currShowData.videosName, currShowData.videosDescription, currShowData.Seasons, currShowData.currentSeason, currShowData.videosImg, showID);
-    }
+        function ShowPage(currShowData, showID)
+        {
+            document.getElementById("myNav").innerHTML = BuildShowPage(baseUrl, currShowData.showName, currShowData.showImg, currShowData.videosLoc, currShowData.showDesctiption, currShowData.videosName, currShowData.videosDescription, currShowData.Seasons, currShowData.currentSeason, currShowData.videosImg, showID);
+        }
     </script>
     
     <script type="text/javascript">
-    var shows = <?php echo $shows->GetShowNames();?>;
-    var showsImages =  <?php echo $shows->GetShowImg();?>;
-    var showsUrl =  <?php echo $shows->GetShowIds();?>;
-    var showsNew =  <?php echo $shows->GetNewShows();?>;
-    
-    function Shows(numCol)
-    {
-        var cards = BuildCards(baseUrl, shows, showsImages, showsUrl, true, showsNew);
+        var shows = <?php echo $shows->GetShowNames();?>;
+        var showsImages =  <?php echo $shows->GetShowImg();?>;
+        var showsUrl =  <?php echo $shows->GetShowIds();?>;
+        var showsNew =  <?php echo $shows->GetNewShows();?>;
         
-        var showString = BuildShows("All",cards,shows,numCol);
-        document.getElementById("Shows").innerHTML = showString;
-        document.getElementById("Main_Body").style.overflow = "visible";
-    }
-    </script>
-    
+        function Shows(numCol)
+        {
+            var cards = BuildCards(baseUrl, shows, showsImages, showsUrl, true, showsNew);
+            
+            var showString = BuildShows("All",cards,shows,numCol);
+            document.getElementById("Shows").innerHTML = showString;
+            document.getElementById("Main_Body").style.overflow = "visible";
+        }
+    </script>    
 </html>

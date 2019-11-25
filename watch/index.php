@@ -30,12 +30,12 @@
 		<div id="VideoControlPannel" class='bg-dark'>
             <table style="width:100%">
                 <tr>
-                    <th style="float: left; width:10%;">
+                    <th style="float: left; width:30%;">
                         <button type="button" class="btn btn-danger" onclick="ReturnShowPage()">
                             <img id="BackButton" style="height:2em;"/>
                         </button>
                     </th>
-                    <th style="text-align: center; width:80%;">
+                    <th style="text-align: center; width:40%;">
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-primary" onclick="SkipTimeline(-10)">-10</button>
                             <button type="button" class="btn btn-primary" onclick="PlayVideo()">
@@ -44,7 +44,7 @@
                             <button type="button" class="btn btn-primary" onclick="SkipTimeline(10)">10+</button>
                         </div>
                     </th>
-                    <th style="text-align: right; width:10%;">
+                    <th style="text-align: right; width:30%;">
                         <button type="button" id='AutoPlay' class="btn text-white" style="background-color:"+currColor+";" onclick='SetAutoPlay()'>
                             AutoPlay
                         </button>
