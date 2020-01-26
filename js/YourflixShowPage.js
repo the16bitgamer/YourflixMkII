@@ -22,9 +22,9 @@ function BuildShowBar(baseUrl, ShowName, ShowId, SeasonName, seasonIdArray, seas
     {
         //Previous Season
         showBar += "<th style=\"text-align: right; width:1%;\">";
-        showBar += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"SelectNextSeason(false)\">";
+        showBar += "<a href=\""+previousSeason+"\"> <button type=\"button\" class=\"btn btn-primary\">";
         showBar += "<img src=\""+baseUrl+"/img/Left%20Arrow.png\" style=\"height:1.5em;\"/>";
-        showBar += "</button>";
+        showBar += "</button></a>";
         showBar += "</th>";
         
         //DropDown Menu
@@ -39,25 +39,15 @@ function BuildShowBar(baseUrl, ShowName, ShowId, SeasonName, seasonIdArray, seas
         
         //Next Season
         showBar += "<th style=\"text-align: right; width:1%;\">";
-        showBar += "<button type=\"button\" class=\"btn btn-primary\" onclick=\"SelectNextSeason(true)\">";
+        showBar += "<a href=\""+nextSeason+"\"> <button type=\"button\" class=\"btn btn-primary\">";
         showBar += "<img src=\""+baseUrl+"img/Right%20Arrow.png\" style=\"height:1.5em;\"/>";
-        showBar += "</button>";
+        showBar += "</button></a>";
         showBar += "</th>";
     }
     showBar += "</tr>";
     showBar += "</table>";
     
     return showBar;
-}
-
-function SelectNextSeason(next)
-{
-    var selectSeason = previousSeason;
-    if(next)
-    {
-        selectSeason = nextSeason;
-    }
-    window.location.href = selectSeason;
 }
 
 function BuildSeasonsDropDown(baseUrl, showId, SeasonName, seasonsIn, seasonsNames)
@@ -78,7 +68,7 @@ function BuildSeasonsDropDown(baseUrl, showId, SeasonName, seasonsIn, seasonsNam
 		{			
 			seasons += "<a class=\"dropdown-item\"";
 		}
-		seasons += "onclick=\"window.location.href = '"+baseUrl+"show/?show="+showId+"&season="+seasonsIn[i]+"'\">";
+		seasons += "href=\""+baseUrl+"show/?show="+showId+"&season="+seasonsIn[i]+"\">";
         seasons += seasonsNames[i];
         seasons += "</a>";
 	}

@@ -177,9 +177,9 @@
         
         function SetVideoWindow()
         {
+            videoWindow = document.getElementById("Video");
             if(canAutoPlay)
             {
-                videoWindow = document.getElementById("Video");
                 videoWindow.addEventListener('ended',WhenVideoEnds,false);
                 function WhenVideoEnds(e)
                 {

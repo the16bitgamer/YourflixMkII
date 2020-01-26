@@ -6,6 +6,10 @@
     {
         $season = null;
     }
+    else
+    {
+        $season = urldecode(explode("season=", $_SERVER['REQUEST_URI'])[1]);
+    }
 ?>
 
 <html lang ="en">
