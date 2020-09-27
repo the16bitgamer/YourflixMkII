@@ -1,3 +1,9 @@
+# YourFlix MKIII
+
+This Project is no longer under development Please check out MKIII for the latest release of YourFlix.
+
+https://github.com/the16bitgamer/YourFlix-MKIII
+
 # YourFlix Mk II
 
 Yourflix Mk II is a web interface and instruction on how to setup a LAMP server for a Raspberry Pi/Linux machine, that will allow you to stream your personal video files on any device. Think of it as a Netflix but where you control the content and no show will get pulled down arbitrarily. 
